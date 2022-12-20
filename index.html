@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,700' rel='stylesheet'>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Kaleidoo</title>
+  </head>
+  <body>
+    <h1>Kaleidoo</h1>
+    <p>Upload a video and a JSON file to get started:</p>
+    <form>
+      <label for="video-upload">Video:</label>
+      <input type="file" id="video-upload" accept="video/*">
+      <br>
+      <label for="json-upload">JSON:</label>
+      <input type="file" id="json-upload" accept=".json">
+      <br>
+      <!-- <button class="btn" type="submit" id="submit-button">Submit</button> -->
+    </form>
+    <br>
+    <video id="player" controls></video>
+    <br>
+    <!-- Make 5 buttons each for different action -->
+    <div class="buttons">
+      <button class="btn" id="labels">Labels</button>
+      <button class="btn" id="transcript">Transcript</button>
+      <button class="btn" id="famousPeople">Famous People</button>
+    </div>
+
+
+    <div id="visualizations">
+        <div id="transcript-placeholder"></div>
+        <div id="famousPeople-placeholder"></div>
+        <div id="labels-placeholder"></div>
+    </div>
+    <div id="blank-space"></div>
+  </body>
+  <script src="script.js"></script>
+</html>
