@@ -27,7 +27,7 @@ async function getBlob(accountName, containerName, blobName) {
 
     // If the request was successful, return the blob data
     if (response.ok) {
-        return await response.blob();
+        return await response.json();
     } else {
         throw new Error(`Failed to retrieve blob: ${response.statusText}`);
     }
