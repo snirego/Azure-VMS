@@ -27,7 +27,7 @@ async function getBlob(accountName, containerName, blobName) {
 
     // If the request was successful, return the blob data
     if (response.ok) {
-        return await response.json();
+        return await response.blob();
     } else {
         throw new Error(`Failed to retrieve blob: ${response.statusText}`);
     }
@@ -54,9 +54,86 @@ videoUploadInput.addEventListener('change', function (event) {
         .then(blob => {
             // The blob data is now stored in the "blob" variable
             console.log(blob);
+            jsonFile = blob;
+
+            // Create a new FileReader
+            const reader = new FileReader();
+
+            // Add an event listener to the FileReader's 'load' event
+            reader.addEventListener('load', () => {
+            // The 'load' event is triggered when the file has been read successfully
+            // The file's contents can be accessed through the 'result' property of the FileReader object
+            jsonData = JSON.parse(reader.result);
+
+            console.log(jsonData);
+
+
+            // Transcript JSON data
+            var listOfTranscript = jsonData.videos[0].insights.transcript;
+
+            for (var i = 0; i < listOfTranscript.length; i++) 
+            {
+                // sentence text
+                var text = listOfTranscript[i].text;
+                var start = listOfTranscript[i].instances[0].start;
+                var end = listOfTranscript[i].instances[0].end;        
+
+                // Convert the timestamp string to a number of seconds
+                var startTimestampSeconds = parseInt(start.split(":")[0]) * 3600 +
+                parseInt(start.split(":")[1]) * 60 +
+                parseInt(start.split(":")[2].split(".")[0]) +
+                parseInt(start.split(":")[2].split(".")[1]) / 100;
+
+                var endTimestampSeconds = parseInt(end.split(":")[0]) * 3600 +
+                parseInt(end.split(":")[1]) * 60 +
+                parseInt(end.split(":")[2].split(".")[0]) +
+                parseInt(end.split(":")[2].split(".")[1]) / 100;
+
+                // console.log(text, startTimestampSeconds, endTimestampSeconds);
+
+                listOfTranscriptWithTimestamps.push([text, startTimestampSeconds, endTimestampSeconds]);
+            }
+            console.log(listOfTranscriptWithTimestamps)
+
+
+
+            // Labels JSON data
+            listOfLabels = jsonData.videos[0].insights.labels;
+
+            for (var i = 0; i < listOfLabels.length; i++)
+            {
+                var label = listOfLabels[i].name;
+                listOfLabelsWithTimestamps[i] = [];
+
+                for (var j = 0; j < listOfLabels[i].instances.length; j++)
+                {
+                    var start = listOfLabels[i].instances[j].start;
+                    var end = listOfLabels[i].instances[j].end;
+
+                    // Convert the timestamp string to a number of seconds
+                    var startTimestampSeconds = parseInt(start.split(":")[0]) * 3600 +
+                    parseInt(start.split(":")[1]) * 60 +
+                    parseInt(start.split(":")[2].split(".")[0]) +
+                    parseInt(start.split(":")[2].split(".")[1]) / 100;
+
+                    var endTimestampSeconds = parseInt(end.split(":")[0]) * 3600 +
+                    parseInt(end.split(":")[1]) * 60 +
+                    parseInt(end.split(":")[2].split(".")[0]) +
+                    parseInt(end.split(":")[2].split(".")[1]) / 100;
+
+                    console.log(label, startTimestampSeconds, endTimestampSeconds);
+                    listOfLabelsWithTimestamps[i][j] = [startTimestampSeconds, endTimestampSeconds];
+                }
+            }
+            console.log(listOfLabelsWithTimestamps)
+        });
+
+        // Start reading the file
+        reader.readAsText(jsonFile);
         })
         .catch(error => {
             // An error occurred while trying to retrieve the blob
+            console.error(error);
         });
 
 });
