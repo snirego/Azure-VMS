@@ -14,7 +14,7 @@ var listOfLabelsWithTimestamps = [];
 var listOfLabels = [];
 
 // ----------------------------------------------< BLOB JSON START >-----------------------------------------------
-async function getBlob(accountName, containerName, blobName) {
+async function getBlob(blobName) {
     // Replace {accountName} and {containerName} with your Azure Storage account name and container name, respectively
     const storageUrl = `https://videoindexerstaccoun.blob.core.windows.net/insights-json/${blobName}`;
 
@@ -50,7 +50,7 @@ videoUploadInput.addEventListener('change', function (event) {
     };
 
     // Call function(videoName) to get the JSON file from the video file
-    getBlob('videoindexerstaccoun', 'insights-json', videoFile.name + '_insights.json')
+    getBlob(videoFile.name + '_insights.json')
         .then(blob => {
             // The blob data is now stored in the "blob" variable
             console.log(blob);
