@@ -23,7 +23,7 @@ async function getBlob(accountName, containerName, blobName) {
     const sasToken = '?sv=2021-06-08&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2022-12-21T17:40:48Z&st=2022-12-21T09:40:48Z&spr=https,http&sig=c6cUFUkFUjcAjth8v63ceEVpuD6mC4bNxLD1DZ9uo7U%3D';
 
     // Send the GET request to the Azure Storage API to retrieve the blob
-    const response = await fetch(storageUrl);
+    const response = await fetch(storageUrl + sasToken);
 
     // If the request was successful, return the blob data
     if (response.ok) {
