@@ -2,10 +2,12 @@
 const videoUploadInput = document.getElementById('video-upload');
 const jsonUploadInput = document.getElementById('json-upload');
 const player = document.getElementById('player');
+const buttons = document.getElementById('buttons');
 const visualizations = document.getElementById('visualizations');
 const transcriptPlaceholder = document.getElementById('transcript-placeholder');
 const famousPeoplePlaceholder = document.getElementById('famousPeople-placeholder');
 const labelsPlaceholder = document.getElementById('labels-placeholder');
+const kaleidooTitle = document.getElementById('kaleidoo-title');
 
 var jsonFile = {};
 var jsonData = {};
@@ -43,6 +45,17 @@ videoUploadInput.addEventListener('change', function (event) {
 
     // Load the video file into the player
     player.src = URL.createObjectURL(videoFile);
+
+    // make player visible
+    player.style.display = "block";
+
+    // make buttons visible
+    buttons.style.display = "flex";
+
+    // make kaleidoo title margin-top smaller
+    kaleidooTitle.style.margin = "20px 0";
+    kaleidooTitle.style.fontSize = "32px";
+    kaleidooTitle.style.fontWeight = "700";
 
     // Automatically play the video when it is loaded
     player.onloadedmetadata = () => {

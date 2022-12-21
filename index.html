@@ -8,10 +8,10 @@
 </head>
 
 <body>
-  <h1>Kaleidoo</h1>
+  <h1 id="kaleidoo-title">Kaleidoo</h1>
   <p>Upload a video to get started:</p>
   <form>
-    <!-- <label for="video-upload">Video:</label> -->
+    <label for="video-upload" class="custom-upload-button">Choose Video</label>
     <input type="file" id="video-upload" accept="video/*">
     <br>
     <!-- <button class="btn" type="submit" id="submit-button">Submit</button> -->
@@ -22,7 +22,7 @@
   <video id="player" controls></video>
   <br>
   <!-- Make 3 buttons each for different action -->
-  <div class="buttons">
+  <div id="buttons" class="buttons">
     <button class="btn" id="labels">Labels</button>
     <button class="btn" id="transcript">Transcript</button>
     <button class="btn" id="famousPeople">Famous People</button>
