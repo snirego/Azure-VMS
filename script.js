@@ -66,7 +66,7 @@ videoUploadInput.addEventListener('change', function (event) {
     getBlob(videoFile.name + '_insights.json')
         .then(blob => {
             // The blob data is now stored in the "blob" variable
-            console.log(blob);
+            // console.log(blob);
             jsonFile = blob;
 
             // Create a new FileReader
@@ -106,7 +106,7 @@ videoUploadInput.addEventListener('change', function (event) {
 
                 listOfTranscriptWithTimestamps.push([text, startTimestampSeconds, endTimestampSeconds]);
             }
-            console.log(listOfTranscriptWithTimestamps)
+            // console.log(listOfTranscriptWithTimestamps)
 
 
 
@@ -123,22 +123,29 @@ videoUploadInput.addEventListener('change', function (event) {
                     var start = listOfLabels[i].instances[j].start;
                     var end = listOfLabels[i].instances[j].end;
 
-                    // Convert the timestamp string to a number of seconds
-                    var startTimestampSeconds = parseInt(start.split(":")[0]) * 3600 +
-                    parseInt(start.split(":")[1]) * 60 +
-                    parseInt(start.split(":")[2].split(".")[0]) +
-                    parseInt(start.split(":")[2].split(".")[1]) / 100;
+                    // Convert the timestamp string to a number of seconds  
+                    var startParts = start.split(':');
+                    var endParts = end.split(':');
+                    // parts is now ['01', '23', '45.67']
 
-                    var endTimestampSeconds = parseInt(end.split(":")[0]) * 3600 +
-                    parseInt(end.split(":")[1]) * 60 +
-                    parseInt(end.split(":")[2].split(".")[0]) +
-                    parseInt(end.split(":")[2].split(".")[1]) / 100;
+                    var startHours = parseInt(startParts[0]);
+                    var startMinutes = parseInt(startParts[1]);
+                    var startSeconds = parseFloat(startParts[2]);
 
-                    console.log(label, startTimestampSeconds, endTimestampSeconds);
+                    var endHours = parseInt(endParts[0]);
+                    var endMinutes = parseInt(endParts[1]);
+                    var endSeconds = parseFloat(endParts[2]);
+
+                    var startTimestampSeconds = startHours * 3600 + startMinutes * 60 + startSeconds;
+                    var endTimestampSeconds = endHours * 3600 + endMinutes * 60 + endSeconds;
+
+
+                    // console.log(label, start, end);
+                    // console.log(label, startTimestampSeconds, endTimestampSeconds);
                     listOfLabelsWithTimestamps[i][j] = [startTimestampSeconds, endTimestampSeconds];
                 }
             }
-            console.log(listOfLabelsWithTimestamps)
+            // console.log(listOfLabelsWithTimestamps)
         });
 
         // Start reading the file
