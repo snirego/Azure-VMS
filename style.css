@@ -19,7 +19,20 @@ body {
     margin: 200px 0;
   }
 
-  
+  .labelsText {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 30px 0;
+    color: #333;
+  }
+
+  .transcript {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 30px 0;
+    color: #333;
+  }
+
   p {
     text-align: center;
     font-size: 16px;

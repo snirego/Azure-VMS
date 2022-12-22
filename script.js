@@ -275,6 +275,9 @@ document.getElementById('famousPeople').addEventListener('click', () => {
 
         // open link in new tab
         linkDiv.target = "_blank";
+
+        // change links color
+        linkDiv.style.color = "blue";
     }
 });
 
@@ -303,12 +306,14 @@ player.addEventListener('timeupdate', () => {
             if (currentTime >= listOfLabelsWithTimestamps[i][j][0] && currentTime <= listOfLabelsWithTimestamps[i][j][1]) {
                 for (var k = 0; k < labelsPlaceholder.childElementCount; k++) {
                     if (labelsPlaceholder.children[k].innerText === listOfLabels[i].name) {
-                        labelsPlaceholder.children[k].style.backgroundColor = 'blue';
-                        labelsPlaceholder.children[k].style.color = 'white';
+                        labelsPlaceholder.children[k].style.display = 'block';
+                        // labelsPlaceholder.children[k].style.backgroundColor = 'blue';
+                        // labelsPlaceholder.children[k].style.color = 'white';
                     }
                     else {
-                        labelsPlaceholder.children[k].style.backgroundColor = 'white';
-                        labelsPlaceholder.children[k].style.color = 'black';
+                        labelsPlaceholder.children[k].style.display = 'none';
+                        // labelsPlaceholder.children[k].style.backgroundColor = 'white';
+                        // labelsPlaceholder.children[k].style.color = 'black';
                     }
                 }
             }
@@ -338,6 +343,12 @@ document.getElementById('labels').addEventListener('click', () => {
         labelsPlaceholder.appendChild(textDiv);
 
         textDiv.innerText = listOfLabels[i].name;
+
+        // Add a class to the div called labelsText
+        textDiv.classList.add('labelsText');
+
+        // Hidden by default
+        textDiv.style.display = 'none';
     }
 });
 
