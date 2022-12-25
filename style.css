@@ -13,10 +13,29 @@ body {
     font-weight: 700;
   }
 
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
   #kaleidoo-title {
     font-size: 60px;
     font-weight: 700;
     margin: 200px 0;
+    animation: fadeIn 1s ease-in-out;
   }
 
   .labelsText {
@@ -81,6 +100,7 @@ body {
     transition: background-color 0.2s ease-in-out;
     font-size: 18px;
     font-weight: 500;
+    animation: fadeIn 1s ease-in-out;
   }
 
   .btn:hover {
@@ -127,6 +147,7 @@ body {
     margin: 0 auto;
     display: none;
     border-radius: 8px;
+    animation: fadeIn 1s ease-in-out;
   }
   
   #visualizations {
@@ -155,6 +176,7 @@ body {
     transition: background-color 0.2s ease-in-out;
     font-size: 16px;
     font-weight: 400;
+    animation: fadeIn 1s ease-in-out;
   }
 
   .custom-upload-button:hover {
@@ -162,10 +184,9 @@ body {
   }
 
 
-
-
-
-
+#upload-video-text {
+  animation: fadeIn 1s ease-in-out;
+}
 
 
   /* Dropdown Button */
