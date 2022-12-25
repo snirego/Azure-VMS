@@ -49,6 +49,9 @@ videoUploadInput.addEventListener('change', function (event) {
     // make player visible
     player.style.display = "block";
 
+    // make video auto loop
+    player.setAttribute("loop", "");
+
     // make buttons visible
     buttons.style.display = "flex";
 
@@ -56,6 +59,21 @@ videoUploadInput.addEventListener('change', function (event) {
     kaleidooTitle.style.margin = "20px 0";
     kaleidooTitle.style.fontSize = "32px";
     kaleidooTitle.style.fontWeight = "700";
+
+    // Reset all the visualizations with try/catch and reset the JSON data
+    try {
+        transcriptPlaceholder.innerHTML = "";
+        famousPeoplePlaceholder.innerHTML = "";
+        labelsPlaceholder.innerHTML = "";
+
+        jsonFile = {};
+        jsonData = {};
+        listOfTranscriptWithTimestamps = [];
+        listOfLabelsWithTimestamps = [];
+        listOfLabels = [];
+    } catch (error) {
+        console.log(error);
+    }
 
     // Automatically play the video when it is loaded
     player.onloadedmetadata = () => {
