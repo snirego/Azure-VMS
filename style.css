@@ -1,13 +1,23 @@
+/* Variables */
+:root {
+    --primary-color: #4984EC;
+    --secondary-color: #4074D1;
+    --primary-text-color: #333;
+    --secondary-text-color: #555;
+    --primary-background-color: #f7f7f7;
+    --white: #fff;
+  }
+  
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background-color: var(--primary-background-color);
   }
 
   h1 {
     text-align: center;
-    color: #333;
+    color: var(--primary-text-color);
     margin: 20px 0;
     font-size: 32px;
     font-weight: 700;
@@ -42,20 +52,20 @@ body {
     font-size: 24px;
     font-weight: 600;
     margin: 30px 0;
-    color: #333;
+    color: var(--primary-text-color);
   }
 
   .transcript {
     font-size: 22px;
     font-weight: 500;
     margin: 30px 0;
-    color: #333;
+    color: var(--primary-text-color);
   }
 
   p {
     text-align: center;
     font-size: 16px;
-    color: #555;
+    color: var(--secondary-text-color);
   }
   
   form {
@@ -67,7 +77,7 @@ body {
   label {
     display: block;
     font-size: 14px;
-    color: #555;
+    color: var(--secondary-text-color);
   }
   
   input[type="file"] {
@@ -94,8 +104,8 @@ body {
     padding-right: 20px;
     border: 0;
     border-radius: 4px;
-    background-color: #0072c6;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     font-size: 18px;
@@ -104,7 +114,7 @@ body {
   }
 
   .btn:hover {
-    background-color: #005b9f;
+    background-color: var(--secondary-color);
   }
 
   #submit-button {
@@ -113,8 +123,8 @@ body {
     padding: 12px;
     border: 0;
     border-radius: 4px;
-    background-color: #0072c6;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     font-size: 16px;
@@ -122,7 +132,7 @@ body {
   }
 
   #submit-button:hover {
-    background-color: #005b9f;
+    background-color: var(--secondary-color);
   }
   
   button[type="submit"] {
@@ -131,14 +141,14 @@ body {
     padding: 12px;
     border: 0;
     border-radius: 4px;
-    background-color: #0072c6;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
   }
 
   button[type="submit"]:hover {
-    background-color: #005b9f;
+    background-color: var(--secondary-color);
   }
 
   #player {
@@ -170,8 +180,8 @@ body {
     padding: 12px;
     border: 0;
     border-radius: 4px;
-    background-color: #0072c6;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white);
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     font-size: 16px;
@@ -180,7 +190,7 @@ body {
   }
 
   .custom-upload-button:hover {
-    background-color: #005b9f;
+    background-color: var(--secondary-color);
   }
 
 
@@ -191,7 +201,7 @@ body {
 
   /* Dropdown Button */
 .dropbtn {
-  background-color: #0072c6;
+  background-color: var(--primary-color);
   color: white;
   padding: 14px;
   font-size: 16px;
@@ -205,7 +215,7 @@ body {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #005b9f;
+  background-color: var(--secondary-color);
 }
 
 /* The search field */
